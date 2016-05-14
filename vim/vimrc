@@ -187,6 +187,11 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " Open Netrw Explorer
 map <leader>k :E<cr>
 
+" Partir la pantalla en dos
+map <leader>sv :vsplit<cr>
+map <leader>sh :split<cr>
+
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -313,9 +318,6 @@ map <leader>p :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
 " Shortcuts using <leader>
 map <leader>sn ]s
 map <leader>sp [s
@@ -396,4 +398,10 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+" cuando guardas ~/.vimrc, ejecutar un comando
+augroup reload_vimrc
+    au!
+    au BufWritePost vimrc :so $MYVIMRC
+augroup end
 
